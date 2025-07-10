@@ -35,6 +35,8 @@ module "eks" {
     module.vpc.public_subnet_ids,
     module.vpc.private_subnet_ids
   )
-    environment = var.environment
+  node_groups   = var.node_groups
+   environment = var.environment
   
 }
+
