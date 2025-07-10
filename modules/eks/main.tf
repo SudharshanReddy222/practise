@@ -59,12 +59,12 @@ resource "aws_iam_role" "eks_node_group_role" {
 resource "aws_iam_role_policy_attachment" "eks_node_group_policy" {
   role       = aws_iam_role.eks_node_group_role.name
   for_each = toset ([
-    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
   ])
     policy_arn = each.value
-    role       = aws_iam_role.eks_node_group_role.name
+    
 }
 resource "aws_eks_node_group" "main" {
   for_each = var.node_groups
