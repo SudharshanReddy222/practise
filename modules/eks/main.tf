@@ -81,7 +81,7 @@ resource "aws_eks_node_group" "main" {
   }
 
   instance_types = [each.value.instance_type]
-  key_name       = each.value.key_name
+  
 
   tags = {
     Name        = "${var.cluster_name}-${each.key}-node-group"
