@@ -42,7 +42,7 @@ variable "node_groups" {
   }))
   default = {
     eks_nodes = {
-      instance_type   = "t2.micro"
+      instance_type   = "t3.medium"
       desired_capacity = 2
       max_size        = 3
       min_size        = 1
