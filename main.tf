@@ -43,5 +43,16 @@ resource "aws_route53_zone" "my_zone" {
   name    = "jayavardhanreddy616.xyz"
   comment = "demo e-commerce project"
 }
+resource "aws_route53_record" "frontend" {
+  zone_id = aws_route53_zone.my_zone.zone_id
+  name    = "jayavardhanreddy616.xyz"
+  type    = "A"
+  alias {
+    name                   = "k8s-default-frontend-6e54782b3e-1405919575.us-east-1.elb.amazonaws.com"
+    zone_id                = "Z01867271T6I3PNQJX2Q2"
+    evaluate_target_health = true
+  }
+}
+
 
 
