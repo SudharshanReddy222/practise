@@ -48,8 +48,8 @@ resource "aws_route53_record" "frontend" {
   name    = "jayavardhanreddy616.xyz"
   type    = "A"
   alias {
-    name                   = "k8s-default-frontend-6e54782b3e-1405919575.us-east-1.elb.amazonaws.com"
-    zone_id                = "Z01867271T6I3PNQJX2Q2"
+    name                   = "dualstack.k8s-default-frontend-6e54782b3e-1405919575.us-east-1.elb.amazonaws.com"
+    zone_id                = "Z35SXDOTRQ7X7K"
     evaluate_target_health = true
   }
 }
