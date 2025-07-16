@@ -54,6 +54,7 @@ resource "aws_route53_record" "frontend" {
   }
 }
 resource "aws_route53_record" "www" {
+  zone_id = aws_route53_zone.my_zone.zone_id
   name    = "www.jayavardhanreddy616.xyz"
   type    = "A"
   alias {
