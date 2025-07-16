@@ -53,6 +53,15 @@ resource "aws_route53_record" "frontend" {
     evaluate_target_health = true
   }
 }
+resource "aws_route53_record" "www" {
+  name    = "www.jayavardhanreddy616.xyz"
+  type    = "A"
+  alias {
+    name                   = "dualstack.k8s-default-backend-6e54782b3e-1405919575.us-east-1.elb.amazonaws.com"
+    zone_id                = "Z35SXDOTRQ7X7K"
+    evaluate_target_health = true
+  }
+}
 
 
 
