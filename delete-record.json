@@ -1,0 +1,19 @@
+{
+  "Comment": "Delete stuck ACM validation record",
+  "Changes": [
+    {
+      "Action": "DELETE",
+      "ResourceRecordSet": {
+        "Name": "_1ca4203afc1e450c0f848d77eaedcabd.jayavardhanreddy616.xyz.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_ac3c00e9d45653bfa4da99babe7d13e3.xlfgrmvvlj.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}
+

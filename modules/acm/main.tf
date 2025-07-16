@@ -1,8 +1,7 @@
 resource "aws_acm_certificate" "this" {
-  domain_name               = var.domain_name
-  validation_method         = "DNS"
-  subject_alternative_names = var.subject_alternative_names
-  tags                      = var.tags
+  domain_name       = "*.jayavardhanreddy616.xyz"
+  validation_method = "DNS"
+  tags              = var.tags
 
   lifecycle {
     create_before_destroy = true
