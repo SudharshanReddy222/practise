@@ -53,6 +53,19 @@ resource "aws_route53_record" "frontend" {
     evaluate_target_health = true
   }
 }
+module "acm" {
+  source  = "./modules/acm"
+
+  domain_name = trimsuffix(aws_route53_zone.my_zone.name, ".")
+  zone_id     = aws_route53_zone.my_zone.zone_id
+
+  subject_alternative_names = ["*.jayavardhanreddy616.xyz"]
+
+  tags = {
+    Project = "ACM-Wildcard"
+  }
+}
+
 
 
 

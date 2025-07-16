@@ -1,19 +1,31 @@
-module "acm" {
-  source  = "terraform-aws-modules/acm/aws"
-  version = "5.0.0"
+resource "aws_acm_certificate" "this" {
+  domain_name               = var.domain_name
+  validation_method         = "DNS"
+  subject_alternative_names = var.subject_alternative_names
+  tags                      = var.tags
 
-  domain_name  = trimsuffix(data.aws_route53_zone.mydomain.name, ".")
-  zone_id      = data.aws_route53_zone.mydomain.zone_id
-
-  subject_alternative_names = [
-    "*.jayavardhanreddy616.xyz"
-  ]
-
-  validation_method     = "DNS"
-  wait_for_validation   = true
-
-  tags = {
-    Environment = "dev"
-    Project     = "ACM-Wildcard"
+  lifecycle {
+    create_before_destroy = true
   }
+}
+
+resource "aws_route53_record" "validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.this.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      type   = dvo.resource_record_type
+      record = dvo.resource_record_value
+    }
+  }
+
+  zone_id = var.zone_id
+  name    = each.value.name
+  type    = each.value.type
+  ttl     = 300
+  records = [each.value.record]
+}
+
+resource "aws_acm_certificate_validation" "this" {
+  certificate_arn         = aws_acm_certificate.this.arn
+  validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
