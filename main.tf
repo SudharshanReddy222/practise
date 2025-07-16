@@ -39,4 +39,8 @@ module "eks" {
    environment = var.environment
   
 }
+resource "aws_route53_zone" "my_zone" {
+  # This block will be filled after import
+}
+
 
