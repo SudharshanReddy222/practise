@@ -40,7 +40,8 @@ module "eks" {
   
 }
 resource "aws_route53_zone" "my_zone" {
-  # This block will be filled after import
+  name    = "jayavardhanreddy616.xyz"
+  comment = "demo e-commerce project"
 }
 
 
