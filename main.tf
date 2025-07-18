@@ -88,5 +88,13 @@ module "cloudwatch_alarm" {
   ok_actions    = [aws_sns_topic.alarm_topic.arn]
 }
 
+module "cloudwatch_dashboard" {
+  source          = "./modules/cloudwatch"
+  dashboard_name  = "${var.cluster_name}-dashboard"
+  region          = "us-east-1"
+  cluster_name    = var.cluster_name
+  nodegroup_name  = "eks_nodes"
+}
+
 
 
