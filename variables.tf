@@ -81,11 +81,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "cluster_name" {
-  description = "EKS Cluster name"
-  type        = string
-  default     = "my-eks-cluster"
-}
 
 variable "nodegroup_name" {
   description = "EKS Node Group name"
