@@ -75,4 +75,25 @@ variable "sns_email" {
   type        = string
   default     = "jayavardhanreddy616@gmail.com"
 }
+variable "region" {
+  description = "AWS region"
+  type        = string
+  default     = "us-east-1"
+}
 
+variable "cluster_name" {
+  description = "EKS Cluster name"
+  type        = string
+  default     = "my-eks-cluster"
+}
+
+variable "nodegroup_name" {
+  description = "EKS Node Group name"
+  type        = string
+  default     = "eks_nodes"
+}
+variable "dashboard_name" {
+  description = "Name of the CloudWatch dashboard"
+  type        = string
+  default     = "EKSNodeGroupDashboard"
+}
