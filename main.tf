@@ -81,11 +81,6 @@ module "cloudwatch_alarm" {
   for_each      = toset(var.instance_ids)
   source        = "./modules/cloudwatch"
   alarm_name = "${var.alarm_name}-${each.key}"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = 1
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/EC2"
-  period              = 300
   threshold     = var.threshold
   instance_id   = each.value
 
