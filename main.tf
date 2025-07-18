@@ -67,5 +67,27 @@ module "acm" {
 }
 
 
+resource "aws_sns_topic" "alarm_topic" {
+  name = var.sns_topic_name
+}
+
+resource "aws_sns_topic_subscription" "email" {
+  topic_arn = aws_sns_topic.alarm_topic.arn
+  protocol  = "email"
+  endpoint  = var.sns_email
+}
+
+module "cloudwatch_alarm" {
+  for_each      = toset(var.instance_ids)
+  source        = "./modules/cloudwatch-alarm"
+  
+  alarm_name    = "${var.alarm_name}-${each.key}"
+  threshold     = var.threshold
+  instance_id   = each.value
+
+  alarm_actions = [aws_sns_topic.alarm_topic.arn]
+  ok_actions    = [aws_sns_topic.alarm_topic.arn]
+}
+
 
 

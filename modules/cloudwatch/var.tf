@@ -13,12 +13,12 @@ variable "instance_id" {
   type        = string
 }
 
-variable "sns_topic_name" {
-  description = "Name for the SNS topic"
-  type        = string
+variable "alarm_actions" {
+  description = "List of actions (SNS topic ARNs) to invoke when alarm is triggered"
+  type        = list(string)
 }
 
-variable "sns_email" {
-  description = "Email address for alarm notifications"
-  type        = string
+variable "ok_actions" {
+  description = "List of actions (SNS topic ARNs) to invoke when alarm returns to OK"
+  type        = list(string)
 }

@@ -50,5 +50,29 @@ variable "node_groups" {
     }
   }
 }
-
+variable "alarm_name" {
+  description = "Name of the CloudWatch alarm"
+  type        = string
+  default     = "HighCPUUtilizationAlarm"
+}
+variable "threshold" {
+  description = "CPU utilization percentage to trigger the alarm"
+  type        = number
+  default     = 70
+}
+variable "instance_ids" {
+  description = "List of EC2 Instance IDs to monitor"
+  type        = list(string)
+  default     = ['i-0eee7945e876ef92d' , 'i-082707f8b7b9d38e4']
+}
+variable "sns_topic_name" {
+  description = "Name for the SNS topic"
+  type        = string
+  default     = "HighCPUUtilizationTopic"
+}
+variable "sns_email" {
+  description = "Email address for alarm notifications"
+  type        = string
+  default     = "jayavardhanreddy616@gmail.com"
+}
 
