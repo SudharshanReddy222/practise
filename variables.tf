@@ -63,7 +63,7 @@ variable "threshold" {
 variable "instance_ids" {
   description = "List of EC2 Instance IDs to monitor"
   type        = list(string)
-  default     = ['i-0eee7945e876ef92d' , 'i-082707f8b7b9d38e4']
+  default     = ["i-0eee7945e876ef92d" , "i-082707f8b7b9d38e4"]
 }
 variable "sns_topic_name" {
   description = "Name for the SNS topic"

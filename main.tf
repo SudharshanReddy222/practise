@@ -86,7 +86,6 @@ module "cloudwatch_alarm" {
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
   period              = 300
-  alarm_name    = "${var.alarm_name}-${each.key}"
   threshold     = var.threshold
   instance_id   = each.value
 
