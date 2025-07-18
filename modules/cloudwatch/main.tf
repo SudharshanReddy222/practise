@@ -15,3 +15,4 @@ resource "aws_cloudwatch_metric_alarm" "this" {
     InstanceId = var.instance_id
   }
   unit = "Percent"
+}
