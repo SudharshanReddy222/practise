@@ -90,7 +90,7 @@ module "cloudwatch_alarm" {
 
 module "cloudwatch_dashboard" {
   source          = "./modules/dashboards"
-  dashboard_name  = "${var.cluster_name}-dashboard"
+  dashboard_name  = "${var.cluster_name}-dashboards"
   region          = "us-east-1"
   cluster_name    = var.cluster_name
   nodegroup_name  = "eks_nodes"
