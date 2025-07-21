@@ -23,7 +23,7 @@ provider "aws" {
   }
  }
  resource "aws_dynamodb_table" "terraform_state_lock" {
-  name         = "terraform_state_lock"
+  name         = "terraform_state_lock-1"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
