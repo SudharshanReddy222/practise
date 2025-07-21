@@ -12,7 +12,7 @@ provider "aws" {
   region = "us-east-1"
 }
  resource "aws_s3_bucket" "my_bucket" {
-  bucket = "terraform-state-bucket-934746"
+  bucket = "terraform-state-bucket-93474676"
   lifecycle {
     prevent_destroy = true
   }
